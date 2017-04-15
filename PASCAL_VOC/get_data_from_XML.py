@@ -12,7 +12,6 @@ class XML_preprocessor(object):
 
     def _preprocess_XML(self):
         filenames = os.listdir(self.path_prefix)
-        print(filenames)
         for filename in filenames:
             tree = ElementTree.parse(self.path_prefix + filename)
             root = tree.getroot()
@@ -20,7 +19,7 @@ class XML_preprocessor(object):
             flag = False
             for object_tree in root.findall('object'):
                 class_name = object_tree.find('name').text
-                if class_name == 'bottle' or class_name == 'crashebottle':
+                if class_name == 'bottle' or class_name == 'crashedbottle':
                     flag = True
             if not flag:
                 continue
@@ -42,6 +41,8 @@ class XML_preprocessor(object):
                 one_hot_class = self._to_one_hot(class_name)
                 one_hot_classes.append(one_hot_class)
             image_name = root.find('filename').text
+            if image_name.split('.')[-1] != 'jpg':
+                image_name += '.jpg'
             bounding_boxes = np.asarray(bounding_boxes)
             one_hot_classes = np.asarray(one_hot_classes)
             image_data = np.hstack((bounding_boxes, one_hot_classes))
@@ -51,7 +52,7 @@ class XML_preprocessor(object):
         one_hot_vector = [0] * self.num_classes
         if name == 'bottle':
             one_hot_vector[0] = 1
-        elif name == 'crashebottle':
+        elif name == 'crashedbottle':
             one_hot_vector[1] = 1
         else:
             print('unknown label: %s' %name)
