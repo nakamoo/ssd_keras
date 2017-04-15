@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<annotation>
+	<folder>crashedbottle</folder>
+	<filename>crashedbottle-00031</filename>
+	<path>/Users/kokinakamura/Dropbox/data/crashedbottle/crashedbottle-00031.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>2448</width>
+		<height>2448</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>crashedbottle</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>482</xmin>
+			<ymin>307</ymin>
+			<xmax>1268</xmax>
+			<ymax>2175</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>crashedbottle</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1779</xmin>
+			<ymin>568</ymin>
+			<xmax>1957</xmax>
+			<ymax>1082</ymax>
+		</bndbox>
+	</object>
+</annotation>
