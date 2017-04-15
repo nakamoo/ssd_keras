@@ -84,8 +84,8 @@ class VideoTest(object):
             "trying to open a webcam, make sure you video_path is an integer!"))
         
         # Compute aspect ratio of video     
-        vidw = vid.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH)
-        vidh = vid.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT)
+        vidw = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
+        vidh = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
         vidar = vidw/vidh
         
         # Skip frames until reaching start_frame
@@ -133,7 +133,8 @@ class VideoTest(object):
                 det_xmax = results[0][:, 4]
                 det_ymax = results[0][:, 5]
 
-                top_indices = [i for i, conf in enumerate(det_conf) if conf >= conf_thresh]
+                # top_indices = [i for i, conf in enumerate(det_conf) if conf >= conf_thresh]
+                top_indices = [i for i, conf in enumerate(det_conf) if conf >= 0.2]
 
                 top_conf = det_conf[top_indices]
                 top_label_indices = det_label[top_indices].tolist()
