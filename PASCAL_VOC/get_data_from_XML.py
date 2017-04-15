@@ -16,13 +16,14 @@ class XML_preprocessor(object):
             tree = ElementTree.parse(self.path_prefix + filename)
             root = tree.getroot()
 
-            flag = False
-            for object_tree in root.findall('object'):
-                class_name = object_tree.find('name').text
-                if class_name == 'bottle' or class_name == 'crashedbottle':
-                    flag = True
-            if not flag:
-                continue
+            ## skip image which don't contain expected category
+            # flag = False
+            # for object_tree in root.findall('object'):
+            #     class_name = object_tree.find('name').text
+            #     if class_name == 'bottle' or class_name == 'crashedbottle':
+            #         flag = True
+            # if not flag:
+            #     continue
 
             bounding_boxes = []
             one_hot_classes = []
